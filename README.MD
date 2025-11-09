@@ -17,23 +17,46 @@ Persyaratan:
 - MySQL Connector/J (tambahkan ke classpath)
 - Database & tabel contoh:
 
-SQL untuk membuat database/tabel:
+## 💾 1️⃣ Siapkan Database (di XAMPP MySQL)
+
+Langkah singkat menyiapkan database menggunakan XAMPP:
+
+1. Buka XAMPP Control Panel → Start Apache & MySQL.
+2. Buka browser dan akses http://localhost/phpmyadmin.
+3. Buat database baru:
+   - Klik "New" → isi nama database: mini_rpg → Klik "Create".
+   - Atau jalankan SQL berikut di tab SQL:
+
 ```sql
--- Buat database (jika belum ada)
 CREATE DATABASE IF NOT EXISTS mini_rpg;
-
 USE mini_rpg;
+```
 
+4. Buat tabel `player` untuk menyimpan snapshot karakter pemain. Jalankan SQL berikut di database `mini_rpg`:
+
+```sql
 CREATE TABLE IF NOT EXISTS player (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nama VARCHAR(100),
-  level INT,
-  exp INT,
-  hp INT,
-  attack INT,
-  defense INT
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama VARCHAR(50),
+    level INT,
+    exp INT,
+    hp INT,
+    attack INT,
+    defense INT
 );
 ```
+
+Penjelasan singkat kolom:
+- id: primary key auto-increment untuk identifikasi setiap save.
+- nama: nama karakter pemain.
+- level, exp: status progres pemain.
+- hp, attack, defense: statistik dasar pemain yang dipakai di pertarungan.
+
+Tips konfigurasi:
+- Pastikan DatabaseManager.URL, USER, PASSWORD sesuai dengan konfigurasi XAMPP (default USER = "root", PASSWORD = "" di banyak instalasi).
+- Letakkan MySQL Connector/J (mysql-connector-java.jar) ke classpath saat kompilasi/eksekusi.
+- Untuk debugging, cek koneksi di DatabaseManager.getConnection() dan pantau pesan pada static block yang memuat driver.
+- Di lingkungan produksi, gunakan password kuat, hak akses terbatas, dan connection pool (mis. HikariCP).
 
 Cara menjalankan:
 1. Pastikan MySQL berjalan dan DatabaseManager.URL sesuai konfigurasi.
@@ -170,6 +193,3 @@ Kesimpulan singkat — Thread dan Database di Java:
   - JDBC menyediakan API standar untuk koneksi, query dan update database.
   - Pastikan pengelolaan koneksi yang baik (tutup Connection/Statement/ResultSet) dan tangani SQLException.
   - Untuk aplikasi nyata, pertimbangkan connection pool dan desain schema yang sesuai.
-
-Catatan:
-- Contoh ini dibuat untuk tujuan pembelajaran; untuk produksi, perbaiki validasi input, handling exception, dan mekanisme update (UPDATE) alih-alih selalu INSERT saat menyimpan status pemain.
