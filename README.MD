@@ -17,7 +17,7 @@ Persyaratan:
 - MySQL Connector/J (tambahkan ke classpath)
 - Database & tabel contoh:
 
-## 💾 1️⃣ Siapkan Database (di XAMPP MySQL)
+## Siapkan Database (di XAMPP MySQL)
 
 Langkah singkat menyiapkan database menggunakan XAMPP:
 
@@ -32,7 +32,7 @@ CREATE DATABASE IF NOT EXISTS mini_rpg;
 USE mini_rpg;
 ```
 
-4. Buat tabel `player` untuk menyimpan snapshot karakter pemain. Jalankan SQL berikut di database `mini_rpg`:
+Buat tabel `player` untuk menyimpan snapshot karakter pemain. Jalankan SQL berikut di database `mini_rpg`:
 
 ```sql
 CREATE TABLE IF NOT EXISTS player (
