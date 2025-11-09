@@ -9,7 +9,7 @@ public class BattleThread extends Thread {
     }
 
     public void run() { 
-        System.out.println("\n⚔️  Pertarungan dimulai antara " + player.name + " dan " + enemy.name + "!\n");
+        System.out.println("\n Pertarungan dimulai antara " + player.name + " dan " + enemy.name + "!\n");
 
         while (!battleOver) {
             try {
@@ -39,7 +39,7 @@ public class BattleThread extends Thread {
             System.out.println(enemy.name + " menyerang balik! (HP pemain: " + player.hp + ")");
 
             if (player.hp <= 0) {
-                System.out.println("\n💀 " + player.name + " kalah!");
+                System.out.println("\n" + player.name + " kalah!");
                 DatabaseManager.savePlayer(player);
                 battleOver = true;
             }

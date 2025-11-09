@@ -8,9 +8,9 @@ public class DatabaseManager {
 static {
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        System.out.println("✅ Driver MySQL berhasil dimuat!");
+        System.out.println("Driver MySQL berhasil dimuat!");
     } catch (ClassNotFoundException e) {
-        System.out.println("❌ Driver MySQL tidak ditemukan! Pastikan .jar sudah di classpath.");
+        System.out.println("Driver MySQL tidak ditemukan! Pastikan .jar sudah di classpath.");
     }
 }
 
@@ -32,7 +32,7 @@ static {
             stmt.setInt(6, p.defense);
             stmt.executeUpdate();
 
-            System.out.println("✅ Data pemain disimpan ke database.");
+            System.out.println("Data pemain disimpan ke database.");
         } catch (SQLException e) {
             e.printStackTrace();
         }

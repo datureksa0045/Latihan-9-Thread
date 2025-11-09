@@ -27,7 +27,7 @@ public class MainGame {
                 player = new Player(nama);
                 DatabaseManager.savePlayer(player);
             } else {
-                System.out.println("✅ Data pemain berhasil dimuat: " + player.name + " (Lv " + player.level + ")");
+                System.out.println("Data pemain berhasil dimuat: " + player.name + " (Lv " + player.level + ")");
             }
         }
 
